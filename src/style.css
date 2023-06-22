@@ -3,7 +3,6 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: rgb(99, 125, 148);
 }
@@ -28,4 +27,54 @@ h1 {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+/* Style app.vue */
+.container {
+  background-color: white;
+  width: 300px;
+  border-radius: 10px;
+  color: black;
+}
+
+ul {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+
+}
+
+li {
+  padding: 20px;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+i {
+  padding: 5px;
+  background-color: rgb(195, 78, 78);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+i:hover {
+  background-color: red;
+}
+
+form {
+  width: 300px;
+}
+
+form input[type="text"] {
+  width: 70%;
+  height: 30px;
+}
+
+form input[type="submit"] {
+  width: 25%;
+  height: 35px;
+  cursor: pointer;
 }
