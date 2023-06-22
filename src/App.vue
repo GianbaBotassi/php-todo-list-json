@@ -20,6 +20,9 @@ export default {
   methods: {
     addTask() {
       console.log(this.newTask);
+    },
+    doneTask(item) {
+      item.done = !item.done
     }
   }
 }
@@ -31,7 +34,7 @@ export default {
   <h1>Todo List</h1>
   <ul class="container">
     <li v-for="task in tasks" :key="task.id">
-      <span :class="task.done ? 'done' : ''">{{ task.name }}</span>
+      <span :class="task.done ? 'done' : ''" @click="doneTask(task)">{{ task.name }}</span>
       <i class="fa-solid fa-trash"></i>
     </li>
 
