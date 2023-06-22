@@ -1,30 +1,61 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script >
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <h1>Todo List</h1>
+  <ul class="container">
+    <li>
+      <span>Ciao</span>
+      <i class="fa-solid fa-trash"></i>
+    </li>
+    <li>
+      <span>Ciao</span>
+      <span>Ciao</span>
+    </li>
+    <li>
+      <span>Ciao</span>
+      <span>Ciao</span>
+    </li>
+  </ul>
+  <form>
+
+    <input type="text" name="new" id="">
+
+  </form>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<style>
+.container {
+  background-color: white;
+  width: 300px;
+  border-radius: 10px;
+  color: black;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+ul {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+li {
+  padding: 20px;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+i {
+  padding: 5px;
+  background-color: rgb(195, 78, 78);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+i:hover {
+  background-color: red;
 }
 </style>
