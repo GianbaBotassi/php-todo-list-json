@@ -14,13 +14,14 @@ $data = json_decode($dataTaskStr);    //decodifico il file json
 
 // Condizioni in base alla "action" richiesta da axios
 
+// var_dump(json_encode($dataReceived));    //Testing data
+
 if($dataReceived['action'] === "add" ){   //Aggiunge task
 
     $newTask = new StdClass();
     $newTask->name = $dataReceived['name'];
     $newTask->done = false;
     
-    // var_dump(array($newTask));
     $data[] = $newTask;
 } elseif ($dataReceived['action'] === "delete"){    //elimina task
   
