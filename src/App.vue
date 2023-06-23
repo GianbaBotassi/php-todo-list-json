@@ -81,7 +81,7 @@ export default {
   <h1>Todo List</h1>
   <ul class="container">
     <li v-for="(task, idx) in tasks" :key="idx">
-      <span :class="task.done ? 'done' : ''" @click="toggleTask.trim(idx)">{{ task.name }}</span>
+      <span :class="task.done ? 'done' : ''" @click="toggleTask(idx)">{{ task.name }}</span>
       <i class="fa-solid fa-trash" @click="deleteTask(idx)"></i>
     </li>
 
