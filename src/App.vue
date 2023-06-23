@@ -29,28 +29,27 @@ export default {
       if (this.newTask === "") {    //return in caso di campo vuoto
         return
       }
-      return data
+      this.axiosPostCall(data)
     },
     deleteTask(idx) {   //metodo per eliminare task
       const data = {
         index: idx,
         action: "delete"
       };
-      return data
+      this.axiosPostCall(data)
     },
     toggleTask(idx) {   //metodo per togglare task.done
       const data = {
         index: idx,
         action: "toggle"
       };
-      return data
+      this.axiosPostCall(data)
     },
     axiosPostCall(data) {
       axios.post(this.urlActionTaskPhp, data, this.headers)
         .then(response => {
           this.tasks = response.data;
-          // console.log("res", response.data);
-          this.newTask = "";
+          this.newTask = ""
         })
         .catch(error => {
           console.error(error);
@@ -64,12 +63,12 @@ export default {
   <h1>Todo List</h1>
   <ul class="container">
     <li v-for="(task, idx) in tasks" :key="idx">
-      <span :class="task.done ? 'done' : ''" @click="axiosPostCall(toggleTask(idx))">{{ task.name }}</span>
-      <i class="fa-solid fa-trash" @click="axiosPostCall(deleteTask(idx))"></i>
+      <span :class="task.done ? 'done' : ''" @click="toggleTask(idx)">{{ task.name }}</span>
+      <i class="fa-solid fa-trash" @click="deleteTask(idx)"></i>
     </li>
 
   </ul>
-  <form @submit.prevent="axiosPostCall(addTask())">
+  <form @submit.prevent="addTask">
     <input type="text" name="newtask" id="newtask" v-model.trim="newTask" placeholder="Inserisci un nuovo task..">
     <input type="submit" value="Inserisci">
   </form>
