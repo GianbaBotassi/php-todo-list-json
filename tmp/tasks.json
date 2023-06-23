@@ -1,1 +1,26 @@
-[{"name":"Refactoring ex todolist","done":false},{"name":"Far uscire Maki","done":false},{"name":"Fare la spesa","done":true},{"name":"Bere tanta acqua","done":true},{"name":"Non mangiare fuori i pasti","done":true},{"name":"fsdsf","done":false},{"name":"efef","done":false}]
+[
+  {
+    "name": "Migliorare style",
+    "done": false
+  },
+  {
+    "name": "Far uscire Maki",
+    "done": true
+  },
+  {
+    "name": "Cucinare per stasera",
+    "done": true
+  },
+  {
+    "name": "Tagliare erba",
+    "done": true
+  },
+  {
+    "name": "Allenarsi",
+    "done": true
+  },
+  {
+    "name": "Far la doccia",
+    "done": false
+  }
+]

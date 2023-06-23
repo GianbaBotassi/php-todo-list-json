@@ -6,64 +6,63 @@ export default {
   data() {
     return {
       urlIndexPhp: "http://localhost/Esercizi%20BackEnd/php-todo-list-json/tmp/index.php",
+      urlActionTaskPhp: 'http://localhost/Esercizi%20BackEnd/php-todo-list-json/tmp/actionTask.php',
       newTask: "",
-      tasks: []
+      tasks: [],
+      headers: {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      }
     }
   },
   mounted() {
     axios.get(this.urlIndexPhp)
       .then(response => {
-        this.tasks = response.data;   //prende task list da server PHP
+        this.tasks = response.data;   //prende all'inizio task list da server PHP
       })
   },
   methods: {
-    addTask() {
-      const url = 'http://localhost/Esercizi%20BackEnd/php-todo-list-json/tmp/newTask.php';
+    addTask() {   //metodo per aggiungere nuova task
       const data = {
         name: this.newTask,
-      };
-      const headers = {
-        headers: { 'Content-Type': 'multipart/form-data' }
-      };
+        action: "add"
+      }
 
       if (this.newTask === "") {    //return in caso di campo vuoto
         return
       }
 
-      axios.post(url, data, headers)
+      axios.post(this.urlActionTaskPhp, data, this.headers)
         .then(response => {
 
           this.tasks = response.data;
-
-          this.newTask = ""
+          this.newTask = ""   //azzera variabile newTask
         })
         .catch(error => {
           console.error(error);
         });
     },
-    deleteTask(idx) {
-      const url = 'http://localhost/Esercizi%20BackEnd/php-todo-list-json/tmp/deleteTask.php';
-      const data = { index: idx };
-      const headers = {
-        headers: { 'Content-Type': 'multipart/form-data' }
+    deleteTask(idx) {   //metodo per eliminare task
+      const data = {
+        index: idx,
+        action: "delete"
       };
 
-      axios.post(url, data, headers)
+      axios.post(this.urlActionTaskPhp, data, this.headers)
         .then(response => {
           this.tasks = response.data;
+          // console.log(response.data);
         })
         .catch(error => {
           console.error(error);
         });
     },
-    toggleTask(idx) {
-      const url = 'http://localhost/Esercizi%20BackEnd/php-todo-list-json/tmp/toggleDoneTask.php';
-      const data = { index: idx };
-      const headers = {
-        headers: { 'Content-Type': 'multipart/form-data' }
+    toggleTask(idx) {   //metodo per togglare task.done
+      const data = {
+        index: idx,
+        action: "toggle"
       };
 
-      axios.post(url, data, headers)
+      axios.post(this.urlActionTaskPhp, data, this.headers)
         .then(response => {
           this.tasks = response.data;
         })
@@ -74,8 +73,6 @@ export default {
   }
 }
 </script>
-
-
 
 <template>
   <h1>Todo List</h1>
