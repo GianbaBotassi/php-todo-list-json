@@ -1,7 +1,8 @@
 <?php
 header("Access-Control-Allow-Origin: http://localhost:5173");
 header("Access-Control-Allow-Headers: X-Requested-With");
-header("Content-Type: application/json");
+// header("Content-Type: application/json");
+
 
 
 $idx = $_POST['index'];   //ricevo oggetto newTask da Vue
@@ -12,7 +13,7 @@ $dataTaskStr = file_get_contents($fileTasks);   //ottengo i dati in stringa json
 
 $data = json_decode($dataTaskStr);    //decodifico il file json
 
-array_splice($data, $idx, 1);   //elimino l'elemento dell'array con l'indice inviato, n.b.:non è un problema se indice arriva sotto forma di stringa
+$data[$idx]->done = !$data[$idx]->done;   //toggle valore true/false
 
 $dataTaskStr = json_encode($data);    //faccio tornare in str json
 
