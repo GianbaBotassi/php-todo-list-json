@@ -52,6 +52,10 @@ li {
   align-items: center;
 }
 
+li:last-child {
+  border: none;
+}
+
 i {
   padding: 5px;
   background-color: rgb(195, 78, 78);
